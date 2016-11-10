@@ -1,2 +1,16 @@
-<h1>CocktailsController#show</h1>
-<p>Find me in app/views/cocktails_controller/show.html.erb</p>
+<h1><%= @cocktail.name %></h1>
+<table>
+  <tr>
+    <th>Ingredients</th>
+    <th>Doses</th>
+    <th><%= link_to "Add", new_cocktail_dose_path(@cocktail), class: "btn btn-default" %></th>
+  </tr>
+  <% @cocktail.doses.each do |dose| %>
+    <tr>
+      <td><%= dose.ingredient.name %></td>
+      <td><%= dose.description %></td>
+      <td><%= link_to "Delete", dose_path, class: "btn btn-link" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "All cocktails", cocktails_path, class: "btn btn-default" %>

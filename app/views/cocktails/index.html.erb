@@ -2,6 +2,6 @@
 <%= link_to "Add new cocktail", new_cocktail_path, class: "btn btn-primary" %>
 <ul>
   <% @cocktails.each do |cocktail| %>
-    <li><%= cocktail.name %></li>
+    <li><%= cocktail.name %> <%= link_to "Show", cocktail_path(cocktail), class: "btn btn-info" %></li>
   <% end %>
 </ul>
