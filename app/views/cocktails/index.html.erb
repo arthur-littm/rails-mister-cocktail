@@ -4,9 +4,7 @@
     <ul class="list-group">
       <% @cocktails.each do |cocktail| %>
         <li class="list-group-item">
-          <div class="row">
           <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn btn-link" %>
-          </div>
         </li>
       <% end %>
     </ul>
