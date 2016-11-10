@@ -1,7 +1,18 @@
-<h1>Cocktails</h1>
-<%= link_to "Add new cocktail", new_cocktail_path, class: "btn btn-primary" %>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= cocktail.name %> <%= link_to "Show", cocktail_path(cocktail), class: "btn btn-info" %></li>
-  <% end %>
-</ul>
+  <div class="container text-center">
+  <div class="small-container text-center">
+  <div class="title"><%= image_tag("fancy-logo.png") %></div>
+    <ul class="list-group">
+      <% @cocktails.each do |cocktail| %>
+        <li class="list-group-item">
+          <div class="row">
+          <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn btn-link" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <%= link_to new_cocktail_path, class: "btn btn-primary"  do %>
+  <%= "Add" %>
+  <i class="fa fa-glass" aria-hidden="true"></i>
+<% end %>
+</div>
+</div>

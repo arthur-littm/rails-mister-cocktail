@@ -23,3 +23,39 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+body {
+  color:white;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 250px;
+  };
+}
+
+.title {
+  margin-top: 30px;
+}
+
+.small-container {
+  width: 500px;
+  ul {
+    width: 180px;
+    margin: 15px auto;
+  }
+  li {
+    margin: 10px;
+  }
+  table {
+    margin: 20px auto;
+  }
+  th {
+    padding: 15px;
+  }
+}
+
+.list-group-item {
+  margin: 10px 10px;
+  border-radius: 8px !important;
+}
