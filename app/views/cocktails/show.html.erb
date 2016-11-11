@@ -2,34 +2,50 @@
   <div class="small-container">
 
     <h1><%= @cocktail.name %></h1>
-    <table>
-      <tr>
-        <th>Ingredients</th>
-        <th>Doses</th>
-        <td><%= link_to new_cocktail_dose_path(@cocktail), class: "text-add" do %>
-         <i class="fa fa-plus-circle" aria-hidden="true"></i>
-         <% end %>
-       </td>
-     </tr>
-     <% @cocktail.doses.each do |dose| %>
-     <tr>
-      <td><%= dose.ingredient.name %></td>
-      <td><%= dose.description %></td>
-      <td><%= link_to dose_path(dose), method: :delete, class: "text-delete" do %>
-        <i class="fa fa-trash" aria-hidden="true"></i>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-  <% if @cocktail.photo? %>
-  <%= cl_image_tag @cocktail.photo.path, width: 300, height: 200, crop: :fill, class: "thumbnail photo" %>
-  <% else %>
+    <div class="rating-container">
+      <%= simple_form_for @cocktail, class: "form-inline" do |f| %>
+      <div class="row", style="display: inline-block;">
+        <fieldset class="rating">
+          <input type="radio" id="star5" name="cocktail[rating]" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+          <input type="radio" id="star4" name="cocktail[rating]" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+          <input type="radio" id="star3" name="cocktail[rating]" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+          <input type="radio" id="star2" name="cocktail[rating]" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+          <input type="radio" id="star1" name="cocktail[rating]" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        </fieldset>
+      </div>
+      <div class="row">
+        <%= f.submit "Rate", class: "btn btn-primary btn-xs"%>
+      </div>
+      <% end %>
+
+      <table>
+        <tr>
+          <th>Ingredients</th>
+          <th>Doses</th>
+          <td><%= link_to new_cocktail_dose_path(@cocktail), class: "text-add" do %>
+           <i class="fa fa-plus-circle" aria-hidden="true"></i>
+           <% end %>
+         </td>
+       </tr>
+       <% @cocktail.doses.each do |dose| %>
+       <tr>
+        <td><%= dose.ingredient.name %></td>
+        <td><%= dose.description %></td>
+        <td><%= link_to dose_path(dose), method: :delete, class: "text-delete" do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <% if @cocktail.photo? %>
+    <%= cl_image_tag @cocktail.photo.path, width: 300, height: 200, crop: :fill, class: "thumbnail photo" %>
+    <% else %>
     <%= simple_form_for @cocktail do |f| %>
-      <%= f.input :photo, as: :attachinary %>
-      <%= f.submit "Add photo"%>
+    <%= f.input :photo, as: :attachinary %>
+    <%= f.submit "Add photo"%>
     <% end %>
-  <% end %>
-  <%= link_to "All cocktails", cocktails_path, class: "btn btn-primary" %>
-</div>
+    <% end %>
+    <%= link_to "All cocktails", cocktails_path, class: "btn btn-primary" %>
+  </div>
 </div>
