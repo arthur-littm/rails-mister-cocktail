@@ -1,16 +1,32 @@
-  <div class="container text-center">
-  <div class="small-container text-center">
+<div class="container-fluid text-center">
   <div class="title"><%= image_tag("fancy-logo.png") %></div>
-    <ul class="list-group">
+  </div>
+  <div class="container cards">
+    <div class="row">
       <% @cocktails.each do |cocktail| %>
-        <li class="list-group-item">
-          <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn btn-link" %>
-        </li>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(
+          <% if cocktail.photo? %>
+          <%= cl_image_path cocktail.photo.path, height: 150, width: 250, crop: :fill %>
+          <% else %>
+          <%= image_path "default.jpg" %>
+          <% end %>
+          );">
+          <div class="card-category"><%=  %></div>
+          <div class="card-description">
+            <h2><%= cocktail.name %></h2>
+          </div>
+            <%= link_to '', cocktail_path(cocktail), class: 'card-link' %>
+        </div>
+      </div>
       <% end %>
-    </ul>
-  <%= link_to new_cocktail_path, class: "btn btn-primary"  do %>
-  <%= "Add" %>
-  <i class="fa fa-glass" aria-hidden="true"></i>
-<% end %>
-</div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card card-new" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <i class="fa fa-glass" aria-hidden="true"></i>
+        <%= link_to '', new_cocktail_path, class: "card-link" %>
+        </div>
+      </div>
+    </div>
+
 </div>

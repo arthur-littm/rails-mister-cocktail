@@ -26,21 +26,21 @@
 body {
   color:white;
 }
-.container {
-  display: flex;
-  justify-content: center;
-  img {
-    width: 250px;
-  };
+.cards {
+  padding-bottom: 50px;
 }
 
 .title {
   margin-top: 30px;
+  img {
+  width: 250px;
+  };
 }
 
 
 .small-container {
   width: 500px;
+  margin: 10px auto;
   ul {
     width: 180px;
     margin: 15px auto;
@@ -60,3 +60,23 @@ body {
   margin: 10px 10px;
   border-radius: 8px !important;
 }
+
+
+.text-delete:hover {
+  color: #F11423;
+}
+
+.text-delete {
+  color: #E45D4E;
+  font-size: 20px;
+}
+
+.text-add {
+  color: white;
+  font-size: 20px;
+}
+
+.text-add:hover {
+  color: #338CD2;
+}
+

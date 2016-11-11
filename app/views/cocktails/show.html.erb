@@ -1,24 +1,35 @@
 <div class="container text-center">
-    <div class="small-container">
+  <div class="small-container">
 
     <h1><%= @cocktail.name %></h1>
     <table>
       <tr>
         <th>Ingredients</th>
         <th>Doses</th>
-        <td><%= link_to new_cocktail_dose_path(@cocktail), class: "btn btn-default" do %>
+        <td><%= link_to new_cocktail_dose_path(@cocktail), class: "text-add" do %>
          <i class="fa fa-plus-circle" aria-hidden="true"></i>
          <% end %>
-        </td>
-      </tr>
-      <% @cocktail.doses.each do |dose| %>
-        <tr>
-          <td><%= dose.ingredient.name %></td>
-          <td><%= dose.description %></td>
-          <td><%= link_to "Delete", dose_path(dose), method: :delete, class: "btn btn-link" %></td>
-        </tr>
-      <% end %>
-    </table>
-    <%= link_to "All cocktails", cocktails_path, class: "btn btn-default" %>
-    </div>
+       </td>
+     </tr>
+     <% @cocktail.doses.each do |dose| %>
+     <tr>
+      <td><%= dose.ingredient.name %></td>
+      <td><%= dose.description %></td>
+      <td><%= link_to dose_path(dose), method: :delete, class: "text-delete" do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <% if @cocktail.photo? %>
+  <%= cl_image_tag @cocktail.photo.path, width: 300, height: 200, crop: :fill, class: "thumbnail photo" %>
+  <% else %>
+    <%= simple_form_for @cocktail do |f| %>
+      <%= f.input :photo, as: :attachinary %>
+      <%= f.button :submit, "Add photo"%>
+    <% end %>
+  <% end %>
+  <%= link_to "All cocktails", cocktails_path, class: "btn btn-primary" %>
+</div>
 </div>
