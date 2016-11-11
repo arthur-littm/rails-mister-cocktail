@@ -27,7 +27,7 @@
   <% else %>
     <%= simple_form_for @cocktail do |f| %>
       <%= f.input :photo, as: :attachinary %>
-      <%= f.button :submit, "Add photo"%>
+      <%= f.submit "Add photo"%>
     <% end %>
   <% end %>
   <%= link_to "All cocktails", cocktails_path, class: "btn btn-primary" %>

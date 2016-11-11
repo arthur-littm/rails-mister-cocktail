@@ -30,8 +30,14 @@ class CocktailsController < ApplicationController
   end
 
   def update
-    @cocktail.save
+    @cocktail.update(cocktail_params)
+    redirect_to cocktail_path(@cocktail)
   end
+
+  # def destroy_photo
+  #   @cocktail.photo.destroy
+  #   redirect_to cocktail_path(cocktail)
+  # end
 
   private
   def get_cocktail
@@ -41,4 +47,8 @@ class CocktailsController < ApplicationController
   def cocktail_params
     params.require(:cocktail).permit(:name, :description, :photo)
   end
+
+  # def cocktail_photo
+  #   params.require(:cocktail).permit(:photo)
+  # end
 end
