@@ -5,7 +5,17 @@
   color: white;
   position: relative;
   margin: 20px;
+  ul {
+    display: none;
+  }
 }
+
+.card:hover {
+  ul {
+    display: block;
+  }
+}
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -20,7 +30,7 @@
 }
 .card-description {
   position: absolute;
-  bottom: 10px;
+  top: 50px;
   left: 10px;
 }
 .card-description h2 {
