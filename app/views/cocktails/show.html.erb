@@ -13,6 +13,7 @@
           <input type="radio" id="star2" name="star[number]" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
           <input type="radio" id="star1" name="star[number]" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
         </fieldset>
+        <p><%= @cocktail.stars.length %> votes</p>
       </div>
       <div class="row">
         <%= f.submit "Rate", class: "btn btn-primary btn-xs"%>
