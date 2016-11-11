@@ -12,12 +12,11 @@
           <%= image_path "default.jpg" %>
           <% end %>
           );">
-          <div class="card-rating">
-            <% if cocktail.rating?  %>
-              <% cocktail.rating.times do |star| %>
+          <div class="card-rating text-center">
+            <% cocktail.average_stars.times do |star| %>
                 <i class="fa fa-star" aria-hidden="true"></i>
               <% end %>
-            <% end %>
+              <p>(<%= cocktail.stars.length %> votes)</p>
           </div>
           <div class="card-description">
             <h2><%= cocktail.name %></h2>
