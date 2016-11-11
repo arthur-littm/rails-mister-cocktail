@@ -16,7 +16,7 @@
           <div class="card-description">
             <h2><%= cocktail.name %></h2>
             <ul>
-              <% cocktail.ingredients.each do |ingredient| %>
+              <% cocktail.ingredients.limit(4).each do |ingredient| %>
                 <li><%= ingredient.name %></li>
               <% end %>
             </ul>
